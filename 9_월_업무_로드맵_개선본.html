@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>9월 업무 로드맵 | 보도자료용</title>
+  <meta name="description" content="Cafe24 9월 업무 로드맵 요약 (비즈커넥트팀, PNP팀) – 보도자료용 시각 자료" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#f8f9fa; --ink:#0f172a; --muted:#475569; --line:#e5e7eb; --blue:#2563eb; --slate:#334155; --teamA:#0ea5e9; --teamB:#34d399; }
+    html,body{ height:100%; }
+    body{ font-family:'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background-color:var(--bg); color:var(--ink); }
+
+    /* Canvas / slide area */
+    .slide{ width:100%; max-width:1280px; min-height:720px; margin:0 auto; background:#fff; box-sizing:border-box; padding:40px; }
+    .brandbar{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+    .brandbar .tag{ font-size:12px; color:#fff; background-color:#1f2937; padding:4px 10px; border-radius:999px; letter-spacing:0.02em; }
+
+    /* Table styling */
+    table.roadmap{ border-collapse:collapse; width:100%; }
+    .roadmap caption{ caption-side:top; font-weight:700; font-size:24px; margin-bottom:16px; }
+    .roadmap th, .roadmap td{ border:1px solid var(--line); padding:10px; }
+    .roadmap thead th{ background:#f1f5f9; color:var(--slate); font-weight:700; text-align:center; }
+    .team-col{ background:#e2e8f0; color:#1e3a8a; font-weight:700; width:16%; }
+
+    /* Timeline bars */
+    .bar{ height:22px; border-radius:11px; background:var(--blue); }
+    .bar.a{ background:var(--teamA); }
+    .bar.b{ background:var(--teamB); }
+    .task{ font-size:14px; color:var(--muted); margin-bottom:6px; }
+    .taskcell{ height:56px; vertical-align:top; }
+
+    /* Legend */
+    .legend{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+    .chip{ display:inline-flex; align-items:center; gap:8px; font-size:12px; color:#334155; background:#f8fafc; border:1px solid var(--line); border-radius:999px; padding:6px 10px; }
+    .dot{ width:12px; height:12px; border-radius:999px; background:var(--blue); display:inline-block; }
+    .dot.a{ background:var(--teamA); }
+    .dot.b{ background:var(--teamB); }
+
+    /* Print (A4 landscape) */
+    @media print{
+      @page { size: A4 landscape; margin: 10mm; }
+      body{ background:#fff; }
+      .slide{ box-shadow:none; padding:16mm; min-height:auto; }
+      .brandbar .btn{ display:none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <!-- Header -->
+    <header aria-label="보도자료용 제목 영역" class="mb-6">
+      <div class="brandbar">
+        <h1 class="text-2xl font-bold">9월 업무 로드맵</h1>
+        <span class="tag" aria-label="자료 구분">Press Asset</span>
+      </div>
+      <p class="text-sm text-gray-500 mb-4">기간: 9월 1주차 ~ 9월 4주차</p>
+      <div class="legend mb-6" aria-label="범례">
+        <span class="chip"><i class="dot"></i> 공통 타임라인</span>
+        <span class="chip"><i class="dot a"></i> 비즈커넥트팀</span>
+        <span class="chip"><i class="dot b"></i> PNP팀</span>
+      </div>
+    </header>
+
+    <!-- Roadmap Table -->
+    <section aria-label="팀별 9월 주차 일정">
+      <table class="roadmap" role="table" aria-describedby="tableDesc">
+        <caption id="tableDesc" class="sr-only">팀별 업무와 주차별 진행 바를 표시한 표</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="team-col">팀 / 업무</th>
+            <th scope="col" class="w-1/5">9월 1주차</th>
+            <th scope="col" class="w-1/5">9월 2주차</th>
+            <th scope="col" class="w-1/5">9월 3주차</th>
+            <th scope="col" class="w-1/5">9월 4주차</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 비즈커넥트팀 -->
+          <tr>
+            <th scope="row" class="team-col align-top">비즈커넥트팀</th>
+            <td class="p-0" colspan="4">
+              <table class="w-full" aria-label="비즈커넥트팀 일정 내부표">
+                <tbody>
+                  <tr>
+                    <td class="taskcell border-b" colspan="2">
+                      <div class="task">보고문서 작성</div>
+                      <div class="bar a w-full" aria-label="1~2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td class="taskcell border-b" colspan="2">
+                      <div class="task">회의록 정리</div>
+                      <div class="bar a w-full" aria-label="1~2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="taskcell border-b">
+                      <div class="task">세일즈포스 등록</div>
+                      <div class="bar a w-full" aria-label="2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="taskcell border-b">
+                      <div class="task">고객 정보 구글 시트 연동</div>
+                      <div class="bar a w-full" aria-label="2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="taskcell border-b" colspan="2">
+                      <div class="task">영업 리드 VOC 감정 분석 모델 제작</div>
+                      <div class="bar a w-full" aria-label="2~3주차 진행"></div>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="taskcell" colspan="2">
+                      <div class="task">영업 AI Agent 제작</div>
+                      <div class="bar a w-full" aria-label="3~4주차 진행"></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+
+          <!-- PNP팀 -->
+          <tr>
+            <th scope="row" class="team-col align-top">PNP팀</th>
+            <td class="p-0" colspan="4">
+              <table class="w-full" aria-label="PNP팀 일정 내부표">
+                <tbody>
+                  <tr>
+                    <td class="taskcell border-b" colspan="2">
+                      <div class="task">PnP팀 주간보고서 자동생성</div>
+                      <div class="bar b w-full" aria-label="1~2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td class="taskcell border-b" colspan="2">
+                      <div class="task">SIIC 주간보고서 자동생성</div>
+                      <div class="bar b w-full" aria-label="1~2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td class="taskcell border-b" colspan="2">
+                      <div class="task">SIIC 월간보고서 자동생성</div>
+                      <div class="bar b w-full" aria-label="1~2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="taskcell border-b">
+                      <div class="task">물류사 동향 조사</div>
+                      <div class="bar b w-full" aria-label="2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="taskcell border-b">
+                      <div class="task">배송사 동향 조사</div>
+                      <div class="bar b w-full" aria-label="2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="taskcell border-b">
+                      <div class="task">솔루션사 동향 조사</div>
+                      <div class="bar b w-full" aria-label="2주차 진행"></div>
+                    </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="taskcell border-b" colspan="2">
+                      <div class="task">SIIC 국내 CS대행 상담신청 관리</div>
+                      <div class="bar b w-full" aria-label="3~4주차 진행"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="taskcell border-b" colspan="2">
+                      <div class="task">상담신청 데이터 추출 및 가공 후 공유</div>
+                      <div class="bar b w-full" aria-label="3~4주차 진행"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="taskcell" colspan="2">
+                      <div class="task">상담 진행 건 세일즈포스 등록</div>
+                      <div class="bar b w-full" aria-label="3~4주차 진행"></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Footer / contact block for press release -->
+    <footer class="mt-8 text-xs text-gray-500">
+      <p class="mb-1">※ 본 자료는 보도용 시각화로, 실제 세부 일정은 내부 사정에 따라 조정될 수 있습니다.</p>
+      <p>문의: PR팀 press@cafe24corp.com | 업데이트: 2025-09-01</p>
+    </footer>
+  </main>
+</body>
+</html>
