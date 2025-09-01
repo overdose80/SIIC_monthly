@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>시너지그룹 메타오토 현황</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f9fafb;
+  }
+  .card { border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+  .heading-section { border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; margin-bottom: 16px; }
+  .metric-card { background-color: #f3f4f6; border-radius: 8px; padding: 16px; text-align: center; }
+  .highlight-card { background-color: #dbeafe; }
+  .metric-value { font-size: 24px; font-weight: bold; color: #1e3a8a; }
+  .metric-label { font-size: 14px; color: #6b7280; }
+</style>
+</head>
+<body>
+<div class="container mx-auto p-6" style="width: 1280px; min-height: 720px;">
+  <div class="bg-white p-8 rounded-lg shadow-sm">
+
+    <!-- 제목 -->
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">시너지그룹 메타오토 현황</h1>
+
+    <!-- 1. 메타오토 현황 -->
+    <div class="mb-8">
+      <div class="heading-section">
+        <h2 class="text-lg font-semibold text-gray-700">1. 메타오토 현황</h2>
+      </div>
+      <div class="grid grid-cols-4 gap-4">
+        <div class="metric-card">
+          <div class="metric-value">12명</div>
+          <div class="metric-label">총 직원수</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">196시간</div>
+          <div class="metric-label">총 근무시간</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">187시간</div>
+          <div class="metric-label">총 가용시간(규정상 가능)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">26.9%</div>
+          <div class="metric-label">가용시간 비중</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">421회</div>
+          <div class="metric-label">녹화 횟수</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">174시간</div>
+          <div class="metric-label">녹화시간</div>
+        </div>
+        <div class="metric-card highlight-card col-span-2">
+          <div class="metric-value text-blue-700">93.1%</div>
+          <div class="metric-label">Meta Auto 활용율</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 풀오토 현황 (Task 기준) -->
+    <div class="mb-8">
+      <div class="heading-section">
+        <h2 class="text-lg font-semibold text-gray-700">2. 풀오토 현황 (Task 기준)</h2>
+      </div>
+      <div class="mb-4">
+        <h3 class="text-gray-700 font-medium mb-2">1) 총 Task 수: 144개</h3>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="p-4 bg-blue-50 rounded-lg">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-600 mb-1">96개</div>
+              <div class="text-sm text-gray-500">기존 산출물 60개</div>
+              <div class="text-lg font-medium mt-2">PNP팀</div>
+            </div>
+          </div>
+          <div class="p-4 bg-blue-50 rounded-lg">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-600 mb-1">27개</div>
+              <div class="text-sm text-gray-500">기존 산출물 32개</div>
+              <div class="text-lg font-medium mt-2">비지니스커넥트팀</div>
+            </div>
+          </div>
+          <div class="p-4 bg-blue-50 rounded-lg">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-600 mb-1">21개</div>
+              <div class="text-sm text-gray-500">기존 산출물 115개</div>
+              <div class="text-lg font-medium mt-2">데이터커넥트팀</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2) 풀오토 가능/불가능 업무 -->
+      <div class="mb-8">
+        <div class="heading-section">
+          <h2 class="text-lg font-semibold text-gray-700">2) 풀오토 가능/불가능 업무</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <!-- 캔버스가 높이 0이 되지 않도록 래퍼에 높이 지정 -->
+            <div class="h-64">
+              <canvas id="capabilityChart"></canvas>
+            </div>
+            <div class="mt-3 text-center text-sm text-gray-600">
+              <div class="flex items-center justify-center space-x-6">
+                <div class="flex items-center"><span class="inline-block w-3 h-3 bg-blue-500 mr-1 rounded-full"></span> 풀오토 가능: 45</div>
+                <div class="flex items-center"><span class="inline-block w-3 h-3 bg-gray-500 mr-1 rounded-full"></span> 풀오토 불가: 99</div>
+                <div class="flex items-center"><span class="inline-block w-3 h-3 bg-green-500 mr-1 rounded-full"></span> 풀오토 완료: 207</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="text-gray-700 font-medium mb-3">주요 불가능 업무 상세</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1">28</div><div>대고객 관점의 대면 또는 비대면 업무</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1">12</div><div>카페24 프로,이지픽 영업 콜드콜</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1">8</div><div>SIIC, 패스트박스, 이지픽 지사 소통 및 관리</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1">15</div><div>서비스 및 자동화 기획 업무</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1">11</div><div>운영 및 관제 중 수동 확인 업무</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1">9</div><div>보고를 위한 자료 확인</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1">5</div><div>개인정보를 포함한 업무</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1">5</div><div>재무팀, 법무팀 등 상위부서 협의</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1">6</div><div>고객소통 및 긴급 cs</div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3) 풀오토 진행률 -->
+      <div>
+        <div class="heading-section">
+          <h2 class="text-lg font-semibold text-gray-700">4) 풀오토 진행률: 45%</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex items-center justify-center">
+            <!-- 진행률 도넛: 래퍼에 명시 크기 -->
+            <div class="w-52 h-52 relative">
+              <canvas id="progressChart"></canvas>
+              <div id="progressText" class="absolute inset-0 flex items-center justify-center text-xl font-bold text-blue-600">45%</div>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="text-gray-700 font-medium mb-3">상세별 세부 현황</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>풀오토 (62개)</span>
+                  <span class="text-green-600 font-semibold">평균 41%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="bg-green-500 h-2 rounded-full" style="width: 41%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>일부 수동 (35개)</span>
+                  <span class="text-green-600 font-semibold">평균 20%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="bg-green-500 h-2 rounded-full" style="width: 20%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /진행률 -->
+
+    </div><!-- /2. 풀오토 현황 -->
+
+  </div><!-- /card -->
+</div><!-- /container -->
+
+<script>
+  // 2) 풀오토 가능/불가능 도넛
+  (function(){
+    const el = document.getElementById('capabilityChart');
+    if(!el) return;
+    const ctx = el.getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['풀오토 가능', '풀오토 불가', '풀오토 완료'],
+        datasets: [{
+          data: [45, 99, 207],
+          backgroundColor: ['#3B82F6', '#6B7280', '#10B981'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false, // 부모 .h-64로 높이 보장
+        plugins: { legend: { display: false } }
+      }
+    });
+  })();
+
+  // 4) 진행률 도넛
+  (function(){
+    const progress = 45;
+    const remain = 100 - progress;
+
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['진행', '미진행'],        // 데이터와 라벨 2:2 맞춤
+        datasets: [{
+          data: [progress, remain],
+          backgroundColor: ['#3B82F6', '#E5E7EB'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,        // 부모 .w-52.h-52로 크기 고정
+        cutout: '70%',
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                const value = ctx.raw;
+                const total = ctx.dataset.data.reduce((a,b)=>a+b,0);
+                const pct = Math.round((value/total)*100);
+                return `${ctx.label}: ${pct}%`;
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // 중앙 텍스트 동기화
+    document.getElementById('progressText').innerText = progress + '%';
+  })();
+</script>
+
+</body>
+</html>
