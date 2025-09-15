@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>고객성장그룹 메타오토 현황</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9fafb; }
+  .card { border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+  .heading-section { border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; margin-bottom: 16px; }
+  .metric-card { background-color: #f3f4f6; border-radius: 8px; padding: 16px; text-align: center; }
+  .highlight-card { background-color: #dbeafe; }
+  .metric-value { font-size: 24px; font-weight: bold; color: #1e3a8a; }
+  .metric-label { font-size: 14px; color: #6b7280; }
+  table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  th, td { border: 1px solid #e5e7eb; padding: 8px; text-align: center; }
+  th { background: #f3f4f6; color: #374151; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="container mx-auto p-6" style="width: 1280px; min-height: 720px;">
+  <div class="bg-white p-8 rounded-lg shadow-sm">
+
+    <!-- 제목 -->
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">고객성장그룹 메타오토 현황</h1>
+
+    <!-- 1. 메타오토 현황 -->
+    <div class="mb-8">
+      <div class="heading-section">
+        <h1 class="text-lg font-semibold text-gray-700">1. 메타오토 현황</h1>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4">
+        <div class="metric-card"><div class="metric-value">18명</div><div class="metric-label">총 직원수</div></div>
+        <div class="metric-card"><div class="metric-value">488시간</div><div class="metric-label">총 근무시간</div></div>
+        <div class="metric-card"><div class="metric-value">214시간</div><div class="metric-label">총 가용시간 (1인당 5시간)</div></div>
+        <div class="metric-card"><div class="metric-value">43.9%</div><div class="metric-label">가용시간 비중</div></div>
+        <div class="metric-card"><div class="metric-value">232회</div><div class="metric-label">녹화횟수</div></div>
+        <div class="metric-card"><div class="metric-value">220시간</div><div class="metric-label">녹화시간</div></div>
+        <div class="metric-card highlight-card col-span-2"><div class="metric-value text-blue-700">102.8%</div><div class="metric-label">Meta Auto 활용율</div></div>
+      </div>
+    </div>
+<br>
+    <!-- 2. 풀오토 현황 (Task 기준) -->
+    <div class="mb-8">
+      <div class="heading-section"><h1 class="text-lg font-semibold text-gray-700">2. 풀오토 현황 (Task 기준)</h1></div>
+
+      <!-- 1) 총 Task 수 -->
+      <div class="mb-8">
+        <div class="heading-section"><h2 class="text-lg font-semibold text-gray-700">1) 총 Task 수: 259개</h2></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-4 bg-blue-50 rounded-lg text-center">
+            <div class="text-3xl font-bold text-blue-600 mb-1">106개</div>
+            <div class="text-sm text-gray-500">1인당 평균 13.2개</div>
+            <div class="text-lg font-medium mt-2">비즈니스컨설팅팀</div>
+          </div>
+          <div class="p-4 bg-blue-50 rounded-lg text-center">
+            <div class="text-3xl font-bold text-blue-600 mb-1">153개</div>
+            <div class="text-sm text-gray-500">1인당 평균 21.9개</div>
+            <div class="text-lg font-medium mt-2">고객경험리드팀</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2) 아키텍처별 업무유형 현황 -->
+      <div class="mb-8">
+        <div class="heading-section">
+          <h2 class="text-lg font-semibold text-gray-700">2) TOP 5 업무유형</h2>
+        </div>
+          <table>
+            <thead>
+              <tr>
+                <th>아키텍처 분류</th>
+                <th>항목(아키텍처2)</th>
+                <th>아키텍처3</th>
+                <th>아키텍처4</th>
+                <th>Task 수</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>계정 성장/확장</td><td>고객 가치 중심 혁신</td><td>맞춤형 성장 코칭</td><td>Top 고객 전담관리</td><td>52</td></tr>
+              <tr><td>풀오토</td><td>본부 운영 효율화</td><td>공통 업무 자동화</td><td>조직 관리 자동화</td><td>45</td></tr>
+              <tr><td>계정 성장/확장</td><td>고객 가치 중심 혁신</td><td>쇼핑몰</td><td>CS최적화</td><td>42</td></tr>
+              <tr><td>풀오토</td><td>본부 운영 효율화</td><td>공통 업무 자동화</td><td>정기 미팅 업무 자동화</td><td>30</td></tr>
+              <tr><td>계정 성장/확장</td><td>고객 가치 중심 혁신</td><td>부천센터 관리지원</td><td>운영 최적화</td><td>23</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 3) 풀오토 가능/불가능 업무 -->
+      <div class="mb-8">
+        <div class="heading-section"><h2 class="text-lg font-semibold text-gray-700">3) 풀오토 가능/불가능 업무</h2></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <div class="h-64"><canvas id="capabilityChart"></canvas></div>
+            <div class="mt-3 text-center text-sm text-gray-600">
+              <div class="flex items-center justify-center space-x-6">
+                <div class="flex items-center"><span class="inline-block w-3 h-3 bg-blue-500 mr-1 rounded-full"></span> 풀오토 가능: 114</div>
+                <div class="flex items-center"><span class="inline-block w-3 h-3 bg-gray-500 mr-1 rounded-full"></span> 풀오토 불가: 145</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="text-gray-700 font-medium mb-3">주요 불가능 업무(Task)</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">7</div><div>회의 사전/사후 소통</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">7</div><div>고객 요구사항 분석·해결방안 검토</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">6</div><div>유관부서 협의·소통(고객 요구사항 해결)</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">6</div><div>고객 요구사항 결과 소통</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">5</div><div>제작 및 유지보수</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">5</div><div>보고/회의 참석</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">5</div><div>메타오토 활용 테스크 마이닝</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">4</div><div>조직운영_외부 제휴사 프로모션/프로세스 협의</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">3</div><div>TOP100/VIP 리워드 혜택 (수동지급)</div></li>
+              <li class="flex items-start"><div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center text-white mr-2 mt-1 text-xs">3</div><div>본사 내방 고객 대응</div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+      <!-- 4) 풀오토 진행률 -->
+      <div>
+        <div class="heading-section"><h2 class="text-lg font-semibold text-gray-700">4) 풀오토 진행률 (114개 기준) : <span id="progressLabel">33.9%</span></h2></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex items-center justify-center">
+            <div class="w-52 h-52 relative">
+              <canvas id="progressChart"></canvas>
+              <div id="progressText" class="absolute inset-0 flex items-center justify-center text-xl font-bold text-blue-600">33.9%</div>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h3 class="text-gray-700 font-medium mb-3">상태별 평균 진행률</h3>
+            <div class="space-y-4">
+              <div><div class="flex justify-between mb-1"><span>풀오토</span><span class="text-green-600 font-semibold">평균 86.8%</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 86.8%"></div></div></div>
+              <div><div class="flex justify-between mb-1"><span>일부 수동</span><span class="text-yellow-600 font-semibold">평균 4.8%</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-yellow-500 h-2 rounded-full" style="width: 4.8%"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /2. 풀오토 현황 -->
+
+  </div><!-- /card -->
+</div><!-- /container -->
+
+<script>
+(function(){
+  const el = document.getElementById('capabilityChart');
+  if(!el) return;
+  const ctx = el.getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: { labels: ['풀오토 가능', '풀오토 불가'], datasets: [{ data: [114, 145], backgroundColor: ['#3B82F6', '#6B7280'], borderWidth: 0 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '60%' }
+  });
+})();
+
+(function(){
+  const progress = 60;
+  const remain = 100 - progress;
+  const ctx = document.getElementById('progressChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: { labels: ['진행', '미진행'], datasets: [{ data: [progress, remain], backgroundColor: ['#3B82F6', '#E5E7EB'], borderWidth: 0 }] },
+    options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: function(ctx) { const value = ctx.raw; const total = ctx.dataset.data.reduce((a,b)=>a+b,0); const pct = Math.round((value/total)*1000)/10; return `${ctx.label}: ${pct}%`; } } } } }
+  });
+  document.getElementById('progressText').innerText = progress + '%';
+  const labelEl = document.getElementById('progressLabel'); if (labelEl) labelEl.innerText = progress + '%';
+})();
+</script>
+
+</body>
+</html>
