@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>해외CS대행서비스 기획 현황 및 임시 운영/이관 계획</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif; 
+            background: #f5f7fa;
+            line-height: 1.6;
+        }
+        
+        /* 컨테이너 */
+        .container { 
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        /* 상단 바 스타일 커버 */
+        .header-cover {
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            color: white;
+            padding: 50px 60px;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .header-logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .header-date {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .header-title {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.3;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+        
+        .header-subtitle {
+            font-size: 18px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+        
+        /* 페이지 스타일 */
+        .page {
+            padding: 50px 60px;
+        }
+        
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #0066FF;
+        }
+        
+        .page-number {
+            font-size: 18px;
+            color: #0066FF;
+            font-weight: 700;
+        }
+        
+        .page-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a202c;
+        }
+        
+        /* 핵심 요약 박스 */
+        .key-summary {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+            padding: 20px 25px;
+            border-radius: 12px;
+            border-left: 5px solid #ffa500;
+            margin-bottom: 25px;
+        }
+        
+        .key-summary-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #cc7000;
+            margin-bottom: 10px;
+        }
+        
+        .key-summary-text {
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+        
+        /* 성과 그리드 - 카드 스타일 */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .achievement-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.08);
+            border: 1px solid #e8f1fb;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.15);
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #0066FF 0%, #00C6FF 100%);
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .achievement-number {
+            font-size: 18px;
+            color: #0066FF;
+            font-weight: 800;
+            margin-bottom: 12px;
+            margin-top: 8px;
+        }
+        
+        .achievement-title {
+            font-size: 16px;
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .achievement-content {
+            font-size: 15px;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+        
+        /* 프로젝트 개요 - 인포그래픽 스타일 */
+        .project-overview {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .overview-card {
+            background: linear-gradient(135deg, #f8fbff 0%, #eef6ff 100%);
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid #d4e6f9;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
+        }
+        
+        .overview-label {
+            font-size: 15px;
+            color: #718096;
+            margin-bottom: 12px;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .overview-value {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0066FF;
+            position: relative;
+        }
+        
+        /* 이슈 섹션 - 타임라인 스타일 */
+        .issue-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .issue-grid::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff4757 0%, #ff6b81 50%, #ffa502 100%);
+            z-index: 0;
+        }
+        
+        .issue-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(255, 71, 87, 0.1);
+            border: 2px solid #ffe8e8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .issue-card::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
+        }
+        
+        .issue-number {
+            font-size: 16px;
+            color: #ff4757;
+            font-weight: 800;
+            margin-bottom: 8px;
+            margin-top: 10px;
+        }
+        
+        .issue-title {
+            font-size: 15px;
+            color: #c0392b;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .issue-content {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+        
+        /* 전략 박스 - 강조 스타일 */
+        .strategy-box {
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            padding: 25px 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strategy-box::before {
+            content: '🎯';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 80px;
+            opacity: 0.1;
+        }
+        
+        .strategy-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 12px;
+        }
+        
+        .strategy-content {
+            font-size: 15px;
+            color: white;
+            line-height: 1.9;
+            position: relative;
+        }
+
+        .strategy-content strong {
+            color: #ffd700;
+        }
+        
+        /* 프로세스 플로우 - 수평 스텝 바 */
+        .process-flow {
+            margin: 30px 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        .process-step-container {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            position: relative;
+        }
+        
+        .process-step {
+            flex: 1;
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            border: 2px solid #e8f1fb;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:first-child {
+            border-radius: 16px 0 0 16px;
+        }
+
+        .process-step:last-child {
+            border-radius: 0 16px 16px 0;
+        }
+
+        .process-step:hover {
+            background: linear-gradient(135deg, #f8fbff 0%, #eef6ff 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.15);
+            z-index: 2;
+        }
+        
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            right: -22px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: #0066FF;
+            font-weight: bold;
+            z-index: 3;
+            text-shadow: 0 2px 8px rgba(0, 102, 255, 0.2);
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        .process-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0066FF 0%, #00C6FF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 28px;
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+        }
+        
+        .process-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0066FF;
+            margin-bottom: 8px;
+        }
+        
+        .process-desc {
+            font-size: 14px;
+            color: #718096;
+        }
+        
+        /* 타임라인 - 가로 3단 레이아웃 */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .timeline-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.08);
+            border: 2px solid #e8f1fb;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.15);
+        }
+        
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #0066FF 0%, #00C6FF 100%);
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .timeline-month {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0066FF;
+            margin-bottom: 8px;
+            margin-top: 5px;
+        }
+        
+        .timeline-phase {
+            font-size: 14px;
+            color: white;
+            background: linear-gradient(135deg, #0066FF 0%, #00C6FF 100%);
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .timeline-tasks {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.9;
+        }
+        
+        .timeline-tasks div {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-tasks div::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #0066FF;
+            font-size: 20px;
+            line-height: 1.2;
+        }
+        
+        /* 이슈 상세 */
+        .issue-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .issue-detail-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #ff4757;
+        }
+
+        .issue-detail-box-full {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid #ffe8e8;
+            margin-top: 20px;
+            box-shadow: 0 4px 20px rgba(255, 71, 87, 0.08);
+        }
+        
+        .issue-detail-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffe8e8;
+        }
+
+        .issue-detail-header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .issue-detail-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+        }
+        
+        .issue-detail-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #c0392b;
+        }
+        
+        .issue-detail-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #ff4757;
+        }
+
+        /* 손익 구조 3단 레이아웃 */
+        .profit-structure-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .profit-structure-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #ff4757;
+        }
+        
+        .issue-detail-label {
+            font-size: 13px;
+            color: #ff4757;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        
+        .issue-detail-text {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+        
+        .issue-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #0066FF 0%, #00C6FF 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+        }
+        
+        .issue-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+        }
+        
+        .section-subtitle {
+            font-size: 22px;
+            color: #0066FF;
+            margin: 30px 0 20px 0;
+            font-weight: 800;
+            padding-left: 15px;
+            border-left: 5px solid #0066FF;
+        }
+        
+        .subsection-title {
+            font-size: 16px;
+            color: #0066FF;
+            font-weight: 700;
+            margin-bottom: 18px;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #f8fbff 0%, #eef6ff 100%);
+            border-radius: 8px;
+            border-left: 4px solid #0066FF;
+        }
+
+        .header-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #0066FF 0%, #00C6FF 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+        }
+
+        .header-link::before {
+            content: '📄';
+            margin-right: 6px;
+            font-size: 14px;
+        }
+
+        .header-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+        }
+        
+        /* 반응형 */
+        @media (max-width: 1024px) {
+            .achievement-grid,
+            .issue-grid,
+            .issue-detail-grid,
+            .profit-structure-grid,
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page, .header-cover {
+                padding: 40px 30px;
+            }
+            
+            .header-title {
+                font-size: 36px;
+            }
+
+            .process-step-container {
+                flex-direction: column;
+            }
+
+            .process-step {
+                border-radius: 16px !important;
+                margin-bottom: 15px;
+            }
+
+            .process-step::after {
+                display: none;
+            }
+        }
+        
+        /* 인쇄 스타일 */
+        @media print {
+            .page {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 상단 바 커버 -->
+        <div class="header-cover">
+            <div class="header-top">
+                <div class="header-logo">CAFE24</div>
+                <div class="header-date">25.01 | 2025 Cafe24 Corp.</div>
+            </div>
+            <div class="header-title">해외CS대행 서비스 운영 및 이관 계획</div>
+            <div class="header-subtitle">고객성장센터</div>
+        </div>
+
+        <!-- 페이지 1: 서비스 기획 추진 성과 -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-title">서비스 기획 추진 성과</div>
+                <div class="page-number">01</div>
+            </div>
+
+            <div class="key-summary">
+                <div class="key-summary-title">핵심 요약</div>
+                <div class="key-summary-text">
+                    ✓ 지난 4분기 동안 부산지사와 함께 서비스 표준 정립 및 운영 인프라 구축을 완료
+                </div>
+            </div>
+
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <div class="achievement-number">① 전략/정책</div>
+                    <div class="achievement-title">서비스 방향성 수립</div>
+                    <div class="achievement-content">
+                        • 운영 기준 표준화<br>
+                        • 공통 표준 정책 문서화<br>
+                        • 서비스 가이드라인 정립<br>
+                        • 비용 시뮬레이션 시행
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-number">② 프로세스</div>
+                    <div class="achievement-title">운영 프로세스 정립</div>
+                    <div class="achievement-content">
+                        • FGS → 부산지사 1차 인수인계(10월)<br>
+                        • 업무 절차 표준화<br>
+                        • 프로세스 문서화
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-number">③ 시스템</div>
+                    <div class="achievement-title">시스템 분석 및 개선</div>
+                    <div class="achievement-content">
+                        • 기능 개선 리스트 도출<br>
+                        • 시스템 요구사항 정의
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-overview">
+                <div class="overview-card">
+                    <div class="overview-label">추진 기간</div>
+                    <div class="overview-value">2025. 10 ~ 12 (3개월)</div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-label">협력 조직</div>
+                    <div class="overview-value">고객성장센터 + SIIC부산</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 페이지 2: 서비스 런칭 기획 중단 -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-title">서비스 런칭 기획 중단</div>
+                <div class="page-number">02</div>
+            </div>
+
+            <div class="key-summary">
+                <div class="key-summary-title">⚠ 임시 중단 배경</div>
+                <div class="key-summary-text">
+                    수익성 검토 및 환경 변화(SIIC부산 BPO서비스 운영 이슈)에 따라 신규 서비스 런칭을 중단하고 SIIC부산 고정수익 회복을 중심으로 임시 전환
+                </div>
+            </div>
+
+            <div class="issue-grid">
+                <div class="issue-card">
+                    <div class="issue-number">① 사업성 재검토</div>
+                    <div class="issue-title">해외CS대행 서비스 비용 시뮬레이션 결과<br>수익성 미달</div>
+                    <div class="issue-content">
+                        → 사업 타당성 부족 판단<br>
+                        → 전략적 재조정 필요
+                    </div>
+                </div>
+
+                <div class="issue-card">
+                    <div class="issue-number">② 수익 구조 악화</div>
+                    <div class="issue-title">국내CS대행 동일법인 고객사의<br>법인분리 및 17개 서브몰 해지</div>
+                    <div class="issue-content">
+                        → 2026년 BPO 서비스 고정 수익 감소<br>
+                        → 수익 기반 약화
+                    </div>
+                </div>
+
+                <div class="issue-card">
+                    <div class="issue-number">③ 리스크 관리 시급</div>
+                    <div class="issue-title">수익 구조 악화에 따른 고정비 부담 가중</div>
+                    <div class="issue-content">
+                        → 신규 서비스 기획/이관 중단<br>
+                        → 위험 최소화 우선 시행
+                    </div>
+                </div>
+            </div>
+
+            <div class="strategy-box">
+                <div class="strategy-title">🎯 전략 수정 방향</div>
+                <div class="strategy-content">
+                    <strong>기존:</strong> 해외CS대행 신규 서비스 정식 런칭 추진 (26년 2월)<br>
+                    <strong>변경:</strong> SIIC부산 고정 수익 회복 중심 + 사업성 재검토 후 런칭 준비 재개
+                </div>
+            </div>
+        </div>
+
+        <!-- 페이지 3: 임시 운영 및 이관 로드맵 -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-title">임시 운영 및 이관 로드맵</div>
+                <div class="page-number">03</div>
+            </div>
+
+            <div class="key-summary">
+                <div class="key-summary-title">임시 운영 계획</div>
+                <div class="key-summary-text">
+                    고객성장센터로 관리 업무 임시 이관 후 SIIC부산에 서비스 공식 런칭 (26년 3월)
+                </div>
+            </div>
+
+            <div class="process-flow">
+                <div class="process-step-container">
+                    <div class="process-step">
+                        <div class="process-icon">📋</div>
+                        <div class="process-name">FGS</div>
+                        <div class="process-desc">기존 운영 주체</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">🔄</div>
+                        <div class="process-name">고객성장센터</div>
+                        <div class="process-desc">한시적 이관/임시 운영</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">🎯</div>
+                        <div class="process-name">SIIC 부산</div>
+                        <div class="process-desc">최종 업무 안착</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">FGS → 고객성장센터 이관 일정</h3>
+
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <div class="timeline-month">1월</div>
+                    <div class="timeline-phase">인수인계</div>
+                    <div class="timeline-tasks">
+                        <div>Kick-off 미팅 완료</div>
+                        <div>시스템 권한 설정 완료</div>
+                        <div>📅 1월 3주차 인수인계 예정</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-month">2월</div>
+                    <div class="timeline-phase">운영/정리</div>
+                    <div class="timeline-tasks">
+                        <div>고객성장센터 주도 임시 운영</div>
+                        <div>기존 고객사 해지 준비</div>
+                        <div>SIIC 부산 이관 착수</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-month">3월</div>
+                    <div class="timeline-phase">최종 이관</div>
+                    <div class="timeline-tasks">
+                        <div>고객사 해지 안내 시행</div>
+                        <div>관리 업무 SIIC 부산 전체 이관</div>
+                        <div>프로젝트 종료</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 페이지 4:  서비스 런칭을 위한 선결 과제 -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-title">서비스 런칭을 위한 선결 과제</div>
+                <div class="page-number">04</div>
+            </div>
+
+            <div class="key-summary">
+                <div class="key-summary-title">현재 상황</div>
+                <div class="key-summary-text">
+                    <strong>진행율</strong> - 현재 기획 공정률 약 60% 수준 (문서 제작 외)<br>
+                    <strong>개선점</strong> - 부산 자체 서비스 전환을 위해 다음의 관리적 병목 구간 해결 선행 필요
+                </div>
+            </div>
+
+            <div class="issue-detail-box-full">
+                <div class="issue-detail-header">
+                    <div class="issue-detail-header-left">
+                        <div class="issue-detail-icon">💰</div>
+                        <div class="issue-detail-title">손익 구조 및 지원 방안</div>
+                    </div>
+                    <a href="https://docs.google.com/spreadsheets/d/1SHy8HNsOeYMXeGxmmFuPxDAarYmYYOO-VFREPduMcj8/edit?gid=0#gid=0" target="_blank" class="header-link">
+                        손익 시뮬레이션 결과 보기
+                    </a>
+                </div>
+
+                <div class="profit-structure-grid">
+                    <div class="profit-structure-item">
+                        <div class="issue-detail-label">현황</div>
+                        <div class="issue-detail-text">
+                            센터 자체 서비스 전환 시<br>
+                            초기/장기적 손익 마이너스 구간 발생 우려
+                        </div>
+                    </div>
+
+                    <div class="profit-structure-item">
+                        <div class="issue-detail-label">필요 조치</div>
+                        <div class="issue-detail-text">
+                            1. 프로젝트 성격상 해외CS 대행 유지 필수<br>
+                            2. 본사 차원의 대응 방안 협의체 논의 필요
+                        </div>
+                    </div>
+
+                    <div class="profit-structure-item">
+                        <div class="issue-detail-label">제안 방안</div>
+                        <div class="issue-detail-text">
+                            1. 비용 보전방안 협의 (1년간 비용 보전)<br>
+                            2. 본사 상품과 세트 판매 구조 보장
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="issue-detail-box-full">
+                <div class="issue-detail-header">
+                    <div class="issue-detail-header-left">
+                        <div class="issue-detail-icon">⚙️</div>
+                        <div class="issue-detail-title">시스템 인프라 결여</div>
+                    </div>
+                    <a href="https://wiki.simplexi.com/pages/viewpage.action?pageId=2806742400" target="_blank" class="header-link">
+                        기능 개선 상세 내역 보기
+                    </a>
+                </div>
+
+                <div class="issue-detail-grid">
+                    <div>
+                        <div class="subsection-title">1. 고객사 확인용 대시보드 부재</div>
+
+                        <div class="issue-detail-section">
+                            <div class="issue-detail-label">현황</div>
+                            <div class="issue-detail-text">
+                                청구서 정합성 검토를 위한 통계 데이터 확인 불가
+                            </div>
+                        </div>
+
+                        <div class="issue-detail-section">
+                            <div class="issue-detail-label">필요 조치</div>
+                            <div class="issue-detail-text">
+                                몰별 처리건 확인이 가능한 대시보드 페이지 제작
+                            </div>
+                        </div>
+
+                        <div class="issue-detail-section">
+                            <div class="issue-detail-label">제안 방안</div>
+                            <div class="issue-detail-text">
+                                본사 제작 지원을 통해 런칭 전 대시보드 페이지 구현
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="subsection-title">2. 청구 시스템 부재</div>
+
+                        <div class="issue-detail-section">
+                            <div class="issue-detail-label">현황</div>
+                            <div class="issue-detail-text">
+                                現, 기존 청구 시스템(카페24 ERP) 활용 불가<br>
+                                &nbsp;&nbsp;ㄴ 과금 방식 전환 : '매출 수수료(5%)' → '건당 과금' 방식 전환<br>
+                                &nbsp;&nbsp;ㄴ SIIC서비스에 대해 본사 시스템을 사용할 수 없음
+                            </div>
+                        </div>
+
+                        <div class="issue-detail-section">
+                            <div class="issue-detail-label">필요 조치</div>
+                            <div class="issue-detail-text">
+                                SIIC부산 자체 시스템 내에서 기능 개선 선행 필요
+                            </div>
+                        </div>
+
+                        <div class="issue-detail-section">
+                            <div class="issue-detail-label">제안 방안</div>
+                            <div class="issue-detail-text">
+                                1. 국내CS대행 청구서 작업 시스템 內 해외CS대행 청구 항목 추가<br>
+                                2. 향후 서비스 안정화 시점에 SIIC 청구 시스템 교체 시도
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 30px 60px; background: #f5f7fa; color: #718096; font-size: 14px;">
+            <strong>문서 버전:</strong> 1.0 | <strong>최종 수정:</strong> 2025.01 | <strong>작성:</strong> 고객성장센터
+        </div>
+    </div>
+</body>
+</html>
